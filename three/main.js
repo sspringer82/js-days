@@ -1,50 +1,63 @@
 import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
-// Szene, Kamera und Renderer erstellen
 const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x00_00_00);
+scene.fog = new THREE.Fog(0xffffff, 0.0025, 500);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.VSMShadowMap;
+renderer.setClearColor(0xff_ff_ff);
+
+document.body.appendChild(renderer.domElement);
+
 const camera = new THREE.PerspectiveCamera(
   75,
   window.innerWidth / window.innerHeight,
   0.1,
-  1000
+  10_000
 );
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+camera.position.set(1000, 1000, 1000);
 
-// Würfel erstellen
-const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
+camera.lookAt(0, 0, -5);
 
-// OrbitControls hinzufügen
+loadSun(scene);
+
+const ambientLight = new THREE.AmbientLight(0x404040);
+ambientLight.intensity = 50;
+scene.add(ambientLight);
+
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
 
-// Kamera-Position
-camera.position.z = 5;
-
-let clock = new THREE.Clock(); // Uhr für delta time
-
-// Animationsloop
 function animate() {
   requestAnimationFrame(animate);
-
-  let delta = clock.getDelta(); // Verstrichene Zeit seit dem letzten Frame
-  let time = clock.getElapsedTime(); // Gesamtzeit seit Start der Animation
-
-  // Rotation des Würfels
-  cube.rotation.x += delta * 0.5;
-  cube.rotation.y += delta * 0.5;
-
-  // Auf- und Abwärtsbewegung
-  cube.position.y = Math.sin(time) * 2; // Würfel bewegt sich sinusförmig auf und ab
-
-  // Controls und Rendering aktualisieren
-  controls.update();
+  controls.update(0.1);
   renderer.render(scene, camera);
 }
-
 animate();
+
+function loadSun(scene) {
+  loadPlanet('Sun.glb', 1, scene, new THREE.Vector3(0, 0, -5), 'sun');
+}
+
+function loadPlanet(fileName, scale, scene, position, name) {
+  const loader = new GLTFLoader();
+  loader.load(
+    fileName,
+    (gltf) => {
+      gltf.scene.scale.set(scale, scale, scale);
+      gltf.scene.position.copy(position);
+      gltf.scene.name = name;
+      scene.add(gltf.scene);
+    },
+    undefined,
+    (error) => {
+      console.error(error);
+    }
+  );
+}
