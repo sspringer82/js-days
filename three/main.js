@@ -1,32 +1,84 @@
-// Import Three.js Module
 import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
-// Szene erstellen
+// Szene, Kamera und Renderer einrichten
 const scene = new THREE.Scene();
-
-// Kamera erstellen (Perspektivische Kamera)
 const camera = new THREE.PerspectiveCamera(
-  75, // Field of View (FoV)
-  window.innerWidth / window.innerHeight, // Seitenverhältnis
-  0.1, // Near Clipping Plane
-  1000 // Far Clipping Plane
+  75,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  1000
 );
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.shadowMap.enabled = true; // Schatten aktivieren
+document.body.appendChild(renderer.domElement);
 
-// WebGLRenderer erstellen
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize(window.innerWidth, window.innerHeight); // Vollbildgröße setzen
-document.body.appendChild(renderer.domElement); // Canvas zum DOM hinzufügen
+// Orbit Controls hinzufügen
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.25;
+controls.enableZoom = true;
 
-// Geometrie und Material für den Würfel erstellen
-const geometry = new THREE.BoxGeometry(); // Würfelgeometrie
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 }); // Einfaches grünes Material
+// Ambient Light hinzufügen (gleichmäßige Grundbeleuchtung)
+const ambientLight = new THREE.AmbientLight(0x404040, 10); // Weiches Umgebungslicht
+scene.add(ambientLight);
 
-// Mesh erstellen (Kombination aus Geometrie und Material)
+// Point Light hinzufügen (Hauptlichtquelle)
+const pointLight = new THREE.PointLight(0xffffff, 100, 100);
+pointLight.position.set(5, 5, 5);
+pointLight.castShadow = true; // Point Light wirft Schatten
+// Schattenkartengröße erhöhen
+pointLight.shadow.mapSize.width = 2048; // Breite der Schattenkarte
+pointLight.shadow.mapSize.height = 2048; // Höhe der Schattenkarte
+
+// Schattenradius (bei PointLight) für weichere Schattenränder
+pointLight.shadow.radius = 4;
+
+// Schatten-Bias für weichere Ränder
+pointLight.shadow.bias = -0.005; // Verhindert Schattenartefakte
+scene.add(pointLight);
+
+// Material erstellen: Grünes MeshStandardMaterial, leicht metallisch und rauh
+const material = new THREE.MeshStandardMaterial({
+  color: 0x00ff00,
+  metalness: 0.7, // Metallischer Effekt (ähnlich gebürstetem Aluminium)
+  roughness: 0.5, // Rauhheit für die Oberfläche
+});
+
+// Würfel erstellen
+const geometry = new THREE.BoxGeometry();
 const cube = new THREE.Mesh(geometry, material);
-scene.add(cube); // Würfel zur Szene hinzufügen
+cube.castShadow = true; // Der Würfel wirft Schatten
+cube.rotation.x = Math.PI / 4; // Leichte Rotation
+cube.rotation.y = Math.PI / 4;
+scene.add(cube);
 
-// Kamera positionieren
-camera.position.z = 5; // Kamera weiter weg von der Szene setzen
+// Plane unter dem Würfel
+const planeGeometry = new THREE.PlaneGeometry(10, 10);
+const planeMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
+const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+plane.rotation.x = -Math.PI / 2; // Plane liegt flach
+plane.position.y = -1.5; // Unterhalb des Würfels positionieren
+plane.receiveShadow = true; // Plane empfängt Schatten
+scene.add(plane);
 
-// Szene einmal rendern (ohne Animation)
-renderer.render(scene, camera);
+// Kamera Position
+camera.position.z = 5;
+
+// Fenster-Resize anpassen
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// Animationsloop für OrbitControls
+function animate() {
+  controls.update(); // OrbitControls updaten
+  renderer.render(scene, camera);
+  requestAnimationFrame(animate);
+}
+
+animate(); // Starte den Animationsloop

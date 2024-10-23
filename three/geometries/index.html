@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Three.js Geometry Selector</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+      #ui {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 100;
+        background-color: rgba(255, 255, 255, 0.7);
+        padding: 10px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="ui">
+      <label for="geometry">Choose Geometry:</label>
+      <select id="geometry">
+        <option value="BoxGeometry">Box</option>
+        <option value="SphereGeometry">Sphere</option>
+        <option value="CylinderGeometry">Cylinder</option>
+        <option value="ConeGeometry">Cone</option>
+        <option value="TorusGeometry">Torus</option>
+        <option value="DodecahedronGeometry">Dodecahedron</option>
+        <option value="TetrahedronGeometry">Tetrahedron</option>
+        <option value="IcosahedronGeometry">Icosahedron</option>
+        <option value="OctahedronGeometry">Octahedron</option>
+        <option value="PlaneGeometry">Plane</option>
+      </select>
+
+      <label for="color">Choose Color:</label>
+      <select id="color">
+        <option value="0xff0000">Red</option>
+        <option value="0x00ff00">Green</option>
+        <option value="0x0000ff">Blue</option>
+        <option value="0xffff00">Yellow</option>
+      </select>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
