@@ -3,28 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Raycaster Planets</title>
+    <title>Three.js Controls Switcher</title>
     <style>
       body {
         margin: 0;
-        overflow: hidden;
       }
       canvas {
         display: block;
       }
       #info {
         position: absolute;
-        background-color: rgba(0, 0, 0, 0.75);
+        top: 10px;
+        left: 10px;
+        background-color: rgba(0, 0, 0, 0.5);
         color: white;
         padding: 10px;
         border-radius: 8px;
-        display: none; /* Info wird nur angezeigt, wenn der Ray einen Planeten trifft */
-        pointer-events: none; /* Das Overlay soll nicht die Mausinteraktion beeinflussen */
+        display: none; /* Info wird nur angezeigt, wenn der Ray den Würfel trifft */
       }
     </style>
   </head>
   <body>
-    <div id="info">Planeten Info:</div>
+    <div id="info">Cube Info:</div>
     <script type="module" src="main.js"></script>
   </body>
 </html>
