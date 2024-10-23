@@ -19,12 +19,12 @@ const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
 const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
 
-// Kamera Position
-camera.position.z = 5;
-
 // OrbitControls hinzufügen
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true; // Dämpfungseffekt für smootheres Drehen
+controls.enableDamping = true;
+
+// Kamera-Position
+camera.position.z = 5;
 
 let clock = new THREE.Clock(); // Uhr für delta time
 
@@ -33,12 +33,17 @@ function animate() {
   requestAnimationFrame(animate);
 
   let delta = clock.getDelta(); // Verstrichene Zeit seit dem letzten Frame
+  let time = clock.getElapsedTime(); // Gesamtzeit seit Start der Animation
 
-  // Rotation des Würfels basierend auf der verstrichenen Zeit
-  cube.rotation.x += delta * 0.5; // 0.5 rad/s
+  // Rotation des Würfels
+  cube.rotation.x += delta * 0.5;
   cube.rotation.y += delta * 0.5;
 
-  controls.update(); // Update der Controls
+  // Auf- und Abwärtsbewegung
+  cube.position.y = Math.sin(time) * 2; // Würfel bewegt sich sinusförmig auf und ab
+
+  // Controls und Rendering aktualisieren
+  controls.update();
   renderer.render(scene, camera);
 }
 
