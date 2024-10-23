@@ -1,0 +1,13 @@
+{
+  "name": "node-demo",
+  "version": "1.0.0",
+  "description": "10 Node.js APIs die du unbedingt kennen solltest",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sebastian Springer <sebastian.springer@maibornwolff.de>",
+  "license": "ISC",
+  "private": true,
+  "type": "module"
+}
