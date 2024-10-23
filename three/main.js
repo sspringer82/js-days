@@ -20,9 +20,9 @@ const camera = new THREE.PerspectiveCamera(
   75,
   window.innerWidth / window.innerHeight,
   0.1,
-  10_000
+  500
 );
-camera.position.set(1000, 1000, 1000);
+camera.position.set(0, 0, 1);
 
 camera.lookAt(0, 0, -5);
 
@@ -42,7 +42,7 @@ function animate() {
 animate();
 
 function loadSun(scene) {
-  loadPlanet('Sun.glb', 1, scene, new THREE.Vector3(0, 0, -5), 'sun');
+  loadPlanet('Sun.glb', -0.009, scene, new THREE.Vector3(0, 0, -5), 'sun');
 }
 
 function loadPlanet(fileName, scale, scene, position, name) {
