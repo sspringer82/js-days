@@ -70,3 +70,6 @@ Browser öffnen: http://localhost:5173/
 	6.	Interaktivität: Meshes können mit Maus- und Touch-Events interagieren, was sie besonders nützlich für interaktive Anwendungen macht. Dies geschieht oft in Kombination mit Raycasting.
 	7.	Physik: Ein Mesh kann mit einer Physik-Engine kombiniert werden, um realistische Simulationen wie Gravitation, Kollisionen oder Kräfte auf das Objekt anzuwenden.
 	8.	Instanzierung: Wenn mehrere gleiche Objekte benötigt werden, können Meshes instanziiert werden, um die Speichernutzung und Performance zu optimieren, indem dieselbe Geometrie mehrfach verwendet wird.
+
+# Planet .glb files
+From Nasa https://nasa3d.arc.nasa.gov/
