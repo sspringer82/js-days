@@ -25,3 +25,12 @@ Parameter für die Darstellung von Merkur:
 - Dateiname: 'Mercury.glb',
 - Skalierung: -0.001,
 - Position: new THREE.Vector3(7, 0, -5),
+
+
+Venus: -0.002
+Erde: -0.002
+Mars: -0.0015
+Jupiter: -0.005
+Saturn: -0.004
+Uranus: -0.003
+Neptun: -0.003

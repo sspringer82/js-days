@@ -16,6 +16,12 @@ renderer.setClearColor(0xff_ff_ff);
 
 document.body.appendChild(renderer.domElement);
 
+const planets = ['sun', 'mercury'];
+const rotationSpeed = 0.2;
+const mercuryOrbitRadius = 7;
+let mercuryOrbitAngle = 0;
+const mercuryOrbitSpeed = 0.8;
+
 const camera = new THREE.PerspectiveCamera(
   75,
   window.innerWidth / window.innerHeight,
@@ -26,38 +32,78 @@ camera.position.set(0, 0, 1);
 
 camera.lookAt(0, 0, -5);
 
-loadSun(scene);
+const sun = await loadSun(scene);
+const mercury = await loadMercury(scene);
 
 const ambientLight = new THREE.AmbientLight(0x404040);
-ambientLight.intensity = 50;
+ambientLight.intensity = 100;
 scene.add(ambientLight);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
+export function rotatePlanets(scene, delta) {
+  sun.rotation.y -= delta * rotationSpeed;
+  mercury.rotation.y -= delta * rotationSpeed;
+}
+export function orbitMercury(scene, delta) {
+  if (mercury && sun) {
+    mercuryOrbitAngle += delta * mercuryOrbitSpeed;
+
+    mercury.position.x =
+      sun.position.x + mercuryOrbitRadius * Math.cos(mercuryOrbitAngle);
+    mercury.position.z =
+      sun.position.z + mercuryOrbitRadius * Math.sin(mercuryOrbitAngle);
+  }
+}
+
+const clock = new THREE.Clock();
 function animate() {
+  const delta = clock.getDelta();
+
   requestAnimationFrame(animate);
   controls.update(0.1);
   renderer.render(scene, camera);
+  rotatePlanets(scene, delta);
+  orbitMercury(scene, delta);
 }
 animate();
 
 function loadSun(scene) {
-  loadPlanet('Sun.glb', -0.009, scene, new THREE.Vector3(0, 0, -5), 'sun');
+  return loadPlanet(
+    'Sun.glb',
+    -0.009,
+    scene,
+    new THREE.Vector3(0, 0, -5),
+    'sun'
+  );
+}
+
+export function loadMercury(scene) {
+  return loadPlanet(
+    'Mercury.glb',
+    -0.001,
+    scene,
+    new THREE.Vector3(7, 0, -5),
+    'mercury'
+  );
 }
 
 function loadPlanet(fileName, scale, scene, position, name) {
-  const loader = new GLTFLoader();
-  loader.load(
-    fileName,
-    (gltf) => {
-      gltf.scene.scale.set(scale, scale, scale);
-      gltf.scene.position.copy(position);
-      gltf.scene.name = name;
-      scene.add(gltf.scene);
-    },
-    undefined,
-    (error) => {
-      console.error(error);
-    }
-  );
+  return new Promise((resolve, reject) => {
+    const loader = new GLTFLoader();
+    loader.load(
+      fileName,
+      (gltf) => {
+        gltf.scene.scale.set(scale, scale, scale);
+        gltf.scene.position.copy(position);
+        gltf.scene.name = name;
+        scene.add(gltf.scene);
+        resolve(gltf.scene);
+      },
+      undefined,
+      (error) => {
+        console.error(error);
+      }
+    );
+  });
 }
