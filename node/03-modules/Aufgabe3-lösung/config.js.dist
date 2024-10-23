@@ -1,0 +1,7 @@
+console.log('config.js wird geladen...');
+
+export const config = {
+  mode: 'development',
+  apiEndpoint: 'https://api.dev.example.com',
+  retryCount: 3,
+};

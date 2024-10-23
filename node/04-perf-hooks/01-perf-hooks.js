@@ -1,11 +1,4 @@
-console.time('foo');
-for (let i = 0; i < 1_000_000; i++) {
-  // console.log('do it');
-  const result = 1 + 2;
-}
-console.timeEnd('foo');
-
-import { performance, PerformanceObserver } from 'node:perf_hooks';
+import { performance, PerformanceObserver } from 'perf_hooks';
 
 // Funktion, um eine zeitintensive Aufgabe zu simulieren
 function simulateTask() {
@@ -13,7 +6,7 @@ function simulateTask() {
 }
 
 // Erstelle einen PerformanceObserver, um Performance-Einträge zu überwachen
-const observer = new PerformanceObserver((items) => {
+const obs = new PerformanceObserver((items) => {
   // Performance-Einträge in der Konsole ausgeben
   items.getEntries().forEach((entry) => {
     console.log(`${entry.name}: ${entry.duration.toFixed(2)} ms`);
@@ -22,7 +15,7 @@ const observer = new PerformanceObserver((items) => {
 });
 
 // Startet den PerformanceObserver
-observer.observe({ entryTypes: ['measure'], buffered: true });
+obs.observe({ entryTypes: ['measure'], buffered: true });
 
 // Setze die erste Markierung
 performance.mark('start-task');
