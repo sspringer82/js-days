@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Three.js Controls Switcher</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      canvas {
+        display: block;
+      }
+      #controls {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 100;
+        background-color: white;
+        padding: 10px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="controls">
+      <label for="controlSelect">Choose Controls: </label>
+      <select id="controlSelect">
+        <option value="OrbitControls">Orbit Controls</option>
+        <option value="PointerLockControls">PointerLock Controls</option>
+        <option value="FlyControls">Fly Controls</option>
+        <option value="TrackballControls">Trackball Controls</option>
+        <option value="FirstPersonControls">First Person Controls</option>
+      </select>
+    </div>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
