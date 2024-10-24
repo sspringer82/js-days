@@ -1,0 +1,232 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "firstname": "John",
+      "lastname": "Doe"
+    },
+    {
+      "id": "2",
+      "firstname": "Jane",
+      "lastname": "Doe"
+    }
+  ],
+  "books": [
+    {
+      "id": "1",
+      "isbn": "978-3-16-148410-0",
+      "title": "The Silent Patient",
+      "release": "2019-02-05T00:00:00.000Z",
+      "pages": 336,
+      "language": "English",
+      "rating": 4
+    },
+    {
+      "id": "2",
+      "isbn": "978-1-250-30669-7",
+      "title": "Where the Crawdads Sing",
+      "release": "2018-08-14T00:00:00.000Z",
+      "pages": 384,
+      "language": "English",
+      "rating": 5
+    },
+    {
+      "id": "3",
+      "isbn": "978-0-06-245771-4",
+      "title": "The Nightingale",
+      "release": "2015-02-03T00:00:00.000Z",
+      "pages": 564,
+      "language": "English",
+      "rating": 5
+    },
+    {
+      "id": "4",
+      "isbn": "978-0-525-56034-4",
+      "title": "The Great Alone",
+      "release": "2018-02-06T00:00:00.000Z",
+      "pages": 448,
+      "language": "English",
+      "rating": 5
+    },
+    {
+      "id": "5",
+      "isbn": "978-0-385-34424-6",
+      "title": "The Goldfinch",
+      "release": "2013-10-22T00:00:00.000Z",
+      "pages": 771,
+      "language": "English",
+      "rating": 4
+    },
+    {
+      "id": "6",
+      "isbn": "978-0-7432-7356-5",
+      "title": "The Road",
+      "release": "2006-09-26T00:00:00.000Z",
+      "pages": 287,
+      "language": "English",
+      "rating": 4
+    },
+    {
+      "id": "7",
+      "isbn": "978-0-316-76948-8",
+      "title": "Little Fires Everywhere",
+      "release": "2017-09-12T00:00:00.000Z",
+      "pages": 338,
+      "language": "English",
+      "rating": 5
+    },
+    {
+      "id": "8",
+      "isbn": "978-0-525-56035-1",
+      "title": "The Tattooist of Auschwitz",
+      "release": "2018-01-27T00:00:00.000Z",
+      "pages": 288,
+      "language": "English",
+      "rating": 4
+    },
+    {
+      "id": "9",
+      "isbn": "978-0-06-231500-7",
+      "title": "Before We Were Strangers",
+      "release": "2015-08-18T00:00:00.000Z",
+      "pages": 352,
+      "language": "English",
+      "rating": 4
+    },
+    {
+      "id": "10",
+      "isbn": "978-0-06-245780-6",
+      "title": "The Alice Network",
+      "release": "2017-06-06T00:00:00.000Z",
+      "pages": 560,
+      "language": "English",
+      "rating": 5
+    },
+    {
+      "id": "11",
+      "isbn": "978-0-06-267678-8",
+      "title": "The Woman in the Window",
+      "release": "2018-01-02T00:00:00.000Z",
+      "pages": 448,
+      "language": "English",
+      "rating": 4
+    },
+    {
+      "id": "12",
+      "isbn": "978-0-06-267841-6",
+      "title": "The Wife Between Us",
+      "release": "2018-01-09T00:00:00.000Z",
+      "pages": 352,
+      "language": "English",
+      "rating": 4
+    },
+    {
+      "id": "13",
+      "isbn": "978-0-06-245779-0",
+      "title": "The Orphan's Tale",
+      "release": "2017-02-21T00:00:00.000Z",
+      "pages": 368,
+      "language": "English",
+      "rating": 4
+    },
+    {
+      "id": "14",
+      "isbn": "978-0-06-267842-3",
+      "title": "The Couple Next Door",
+      "release": "2016-07-14T00:00:00.000Z",
+      "pages": 320,
+      "language": "English",
+      "rating": 4
+    },
+    {
+      "id": "15",
+      "isbn": "978-0-06-267843-0",
+      "title": "The Girl on the Train",
+      "release": "2015-01-13T00:00:00.000Z",
+      "pages": 336,
+      "language": "English",
+      "rating": 4
+    },
+    {
+      "id": "16",
+      "isbn": "978-0-06-267844-7",
+      "title": "Big Little Lies",
+      "release": "2014-07-29T00:00:00.000Z",
+      "pages": 460,
+      "language": "English",
+      "rating": 4
+    },
+    {
+      "id": "17",
+      "isbn": "978-0-06-267845-4",
+      "title": "The Light We Lost",
+      "release": "2017-05-09T00:00:00.000Z",
+      "pages": 320,
+      "language": "English",
+      "rating": 4
+    },
+    {
+      "id": "18",
+      "isbn": "978-0-06-267846-1",
+      "title": "The Night Circus",
+      "release": "2011-09-13T00:00:00.000Z",
+      "pages": 512,
+      "language": "English",
+      "rating": 4
+    },
+    {
+      "id": "19",
+      "isbn": "978-0-06-267847-8",
+      "title": "The Book Thief",
+      "release": "2005-03-14T00:00:00.000Z",
+      "pages": 552,
+      "language": "English",
+      "rating": 4
+    },
+    {
+      "id": "20",
+      "isbn": "978-0-06-267848-5",
+      "title": "The Help",
+      "release": "2009-02-10T00:00:00.000Z",
+      "pages": 464,
+      "language": "English",
+      "rating": 5
+    },
+    {
+      "id": "21",
+      "isbn": "adsf",
+      "title": "asdf",
+      "release": "2024-10-18T06:23:38.472Z",
+      "pages": "42",
+      "language": "deutsch",
+      "rating": "4"
+    },
+    {
+      "id": "996b",
+      "isbn": "a1",
+      "title": "a1",
+      "release": "2024-10-21T15:54:07.663Z",
+      "pages": "42",
+      "language": "a1",
+      "rating": "3"
+    },
+    {
+      "id": "0563",
+      "isbn": "a2",
+      "title": "a2",
+      "release": "2024-10-21T15:55:46.551Z",
+      "pages": "3",
+      "language": "a2",
+      "rating": "1"
+    },
+    {
+      "id": "e10b",
+      "isbn": "a3",
+      "title": "a3",
+      "release": "2024-10-21T15:57:48.824Z",
+      "pages": 0,
+      "language": "",
+      "rating": 0
+    }
+  ]
+}
