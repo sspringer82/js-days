@@ -1,9 +1,15 @@
 import List from './components/List';
 import Form from './components/Form';
 import NotFound from './components/NotFound';
-import { createBrowserRouter, Navigate } from 'react-router-dom';
+import { createBrowserRouter, Navigate, redirect } from 'react-router-dom';
 import Details from './components/Details';
-import { getAllUsers, getUserById } from '../api/users.api';
+import {
+  createUser,
+  getAllUsers,
+  getUserById,
+  updateUser,
+} from '../api/users.api';
+import { User } from '../types/User';
 
 const router = createBrowserRouter([
   {
@@ -19,13 +25,38 @@ const router = createBrowserRouter([
     path: '/create',
     element: <Form />,
     action: async ({ request, params }) => {
-      console.log(request);
-      console.log(params);
+      const formData = await request.formData();
+      const user = {
+        firstname: formData.get('firstname'),
+        lastname: formData.get('lastname'),
+      } as User;
+      if (!params.id) {
+        await createUser(user);
+      } else {
+        await updateUser({ ...user, id: params.id });
+      }
+      return redirect('/list');
     },
   },
   {
     path: '/edit/:id',
     element: <Form />,
+    loader: async ({ params }) => {
+      return getUserById(params.id!);
+    },
+    action: async ({ request, params }) => {
+      const formData = await request.formData();
+      const user = {
+        firstname: formData.get('firstname'),
+        lastname: formData.get('lastname'),
+      } as User;
+      if (!params.id) {
+        await createUser(user);
+      } else {
+        await updateUser({ ...user, id: params.id });
+      }
+      return redirect('/list');
+    },
   },
   {
     path: '/details/:id',

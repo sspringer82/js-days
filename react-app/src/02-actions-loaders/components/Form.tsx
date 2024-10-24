@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Form as RouterForm, useParams } from 'react-router-dom';
+import { Form as RouterForm, useLoaderData, useParams } from 'react-router-dom';
+import { User } from '../../types/User';
 
 function Form() {
   const { id } = useParams();
 
   // get data from loader
-  const loadedUser = null as any;
+  const loadedUser = useLoaderData() as User | undefined;
 
   const [firstname, setFirstname] = useState(loadedUser?.firstname || '');
   const [lastname, setLastname] = useState(loadedUser?.lastname || '');
