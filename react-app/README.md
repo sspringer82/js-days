@@ -21,3 +21,13 @@ npm install react-router-dom
 - React Router: https://reactrouter.com/
 - Material Design: https://m3.material.io/foundations
 - Apple Design: https://developer.apple.com/design/human-interface-guidelines
+- TanStack Query: https://tanstack.com/query/latest
+- React Hook Form: https://www.react-hook-form.com/
+- Zod: https://zod.dev/
+- I18next: https://www.i18next.com/
+- ReactI18next: https://react.i18next.com/
+- MaterialUI: https://mui.com/material-ui/getting-started/
+- vitest: https://vitest.dev/
+- React Testing Library: https://testing-library.com/docs/react-testing-library/intro/
+- TanstackRouter: https://tanstack.com/router/latest
+- TanstackForm: https://tanstack.com/form/latest
