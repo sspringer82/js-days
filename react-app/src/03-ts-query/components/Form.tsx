@@ -5,8 +5,8 @@ import {
   useQueryClient,
   useSuspenseQuery,
 } from '@tanstack/react-query';
-import { User } from '../User';
-import { fetchUserById, createUser, updateUser } from '../api/users';
+import { User } from '../../types/User';
+import { createUser, getUserById, updateUser } from '../../api/users.api';
 
 function Form() {
   const [user, setUser] = useState<User>({ firstname: '', lastname: '' });
@@ -20,7 +20,7 @@ function Form() {
       if (id === undefined) {
         return null;
       }
-      return fetchUserById(id);
+      return getUserById(id);
     },
   });
 
@@ -33,14 +33,14 @@ function Form() {
   // Mutation for creating a new user
   const createUserMutation = useMutation({
     mutationFn: createUser,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['users'] }); // Refetch the users list after mutation
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: ['users'] }); // Refetch the users list after mutation
       navigate('/list');
     },
   });
 
   const updateUserMutation = useMutation({
-    mutationFn: (data: User) => updateUser(id!, data),
+    mutationFn: (data: User) => updateUser(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['users'] }); // Refetch the users list after mutation
       navigate('/list');
@@ -49,7 +49,7 @@ function Form() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setUser((prevUser) => ({ ...prevUser, [name]: value }));
+    setUser((prevUser: User) => ({ ...prevUser, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
