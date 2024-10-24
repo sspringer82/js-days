@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
+import { User } from '../../types/User';
 
 function List() {
-  const users = null as any;
+  const users = useLoaderData() as User[];
 
   return (
     <div>

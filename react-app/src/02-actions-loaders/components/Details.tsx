@@ -1,19 +1,8 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import { User } from '../../types/User';
-import { getUserById } from '../../api/users.api';
 
 const Details: React.FC = () => {
-  const { id } = useParams();
-
-  const [user, setUser] = useState<User | null>(null);
-
-  useEffect(() => {
-    if (id) {
-      getUserById(id).then((userFromServer) => setUser(userFromServer));
-    }
-  }, [id]);
-
+  const user = useLoaderData() as User;
   return (
     <div>
       <h1>Details for {`${user?.firstname} ${user?.lastname}`}</h1>

@@ -20,7 +20,7 @@ function Form() {
   return (
     <div>
       <h1>{id ? 'Edit User' : 'Create New User'}</h1>
-      <form>
+      <RouterForm method={id ? 'put' : 'post'}>
         <div>
           <label htmlFor="firstname">First Name:</label>
           <input
@@ -44,7 +44,7 @@ function Form() {
           />
         </div>
         <button type="submit">{id ? 'Update User' : 'Create User'}</button>
-      </form>
+      </RouterForm>
     </div>
   );
 }
