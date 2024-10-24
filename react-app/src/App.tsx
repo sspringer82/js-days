@@ -1,5 +1,5 @@
 import './App.css';
-import RouterApp from './01-router/App';
+import RouterApp from './02-actions-loaders/App';
 
 function App() {
   return <RouterApp />;
