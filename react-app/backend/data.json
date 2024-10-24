@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "firstname": "Johny",
+      "firstname": "Johann",
       "lastname": "Doe",
       "id": "1"
     },
@@ -19,6 +19,16 @@
       "id": "dbff",
       "firstname": "Maria",
       "lastname": "Peters"
+    },
+    {
+      "id": "2b0f",
+      "firstname": "Mickey",
+      "lastname": "Mouse"
+    },
+    {
+      "id": "58e4",
+      "firstname": "Hans",
+      "lastname": "Wurst"
     }
   ],
   "books": [
