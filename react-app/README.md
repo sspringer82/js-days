@@ -19,3 +19,5 @@ npm install react-router-dom
 # Links
 - NPM Trends (react-query vs. swr): https://npmtrends.com/@tanstack/react-query-vs-react-query-vs-swr
 - React Router: https://reactrouter.com/
+- Material Design: https://m3.material.io/foundations
+- Apple Design: https://developer.apple.com/design/human-interface-guidelines
