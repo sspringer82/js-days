@@ -17,6 +17,14 @@ const router = createBrowserRouter([
     element: <Navigate to="/list" />,
   },
   {
+    path: '/create',
+    element: <Form />,
+  },
+  {
+    path: '/edit/:id',
+    element: <Form />,
+  },
+  {
     path: '*',
     element: <NotFound />,
   },
