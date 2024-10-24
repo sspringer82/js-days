@@ -1,13 +1,17 @@
-import { useEffect, useState } from 'react';
 import { getAllUsers } from '../../api/users.api';
-import { User } from '../../types/User';
+import { useSuspenseQuery } from '@tanstack/react-query';
 
 const List: React.FC = () => {
-  const [users, setUsers] = useState<User[]>([]);
+  // const [users, setUsers] = useState<User[]>([]);
 
-  useEffect(() => {
-    getAllUsers().then((users) => setUsers(users));
-  }, []);
+  // useEffect(() => {
+  //   getAllUsers().then((users) => setUsers(users));
+  // }, []);
+
+  const { data: users } = useSuspenseQuery({
+    queryKey: ['users'],
+    queryFn: getAllUsers,
+  });
 
   return (
     <div>

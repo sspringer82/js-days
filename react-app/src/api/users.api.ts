@@ -1,8 +1,19 @@
 import { User } from '../types/User';
 
+async function wait(time: number): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(resolve, time);
+  });
+}
+
 export async function getAllUsers(): Promise<User[]> {
   const response = await fetch('http://localhost:3001/users');
-  return response.json() as Promise<User[]>;
+  if (!response.ok) {
+    throw new Error('Failed to fetch users');
+  }
+  const users = (await response.json()) as Promise<User[]>;
+  await wait(0);
+  return users;
 }
 
 export async function getUserById(id: string): Promise<User> {

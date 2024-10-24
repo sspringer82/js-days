@@ -1,5 +1,5 @@
 import './App.css';
-import RouterApp from './02-actions-loaders/App';
+import RouterApp from './03-ts-query/App';
 
 function App() {
   return <RouterApp />;
