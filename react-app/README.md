@@ -15,3 +15,7 @@ npm create vite@latest react-app -- --template react-ts
 # React Router
 
 npm install react-router-dom
+
+# Links
+- NPM Trends (react-query vs. swr): https://npmtrends.com/@tanstack/react-query-vs-react-query-vs-swr
+- React Router: https://reactrouter.com/
